@@ -2,7 +2,7 @@
 html, body, div, span, applet, object, iframe,h1, h2, h3, h4, h5, h6, p, blockquote, pre,a, abbr, acronym, address, big, cite, code,del, dfn, em, img, ins, kbd, q, s, samp,small, strike, strong, sub, sup, tt, var,b, u, i, center,dl, dt, dd, ol, ul, li,fieldset, form, label, legend,table, caption, tbody, tfoot, thead, tr, th, td,article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary,time, mark, audio, video {	margin: 0;	padding: 0;	border: 0;	font-size: 100%;	font: inherit;	vertical-align: baseline;}/* HTML5 display-role reset for older browsers */article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {	display: block;}body {	line-height: 1;}ol, ul {	list-style: none;}blockquote, q {	quotes: none;}blockquote:before, blockquote:after,q:before, q:after {	content: '';	content: none;}table {	border-collapse: collapse;	border-spacing: 0;}
 
 /* ここにCSSを書いてデザインを入れよう */
-
+/* タイトルを中央配置 */
 /* boxの高さ、幅に border-width と padding を含める */
 * {
   box-sizing: border-box;
@@ -11,6 +11,9 @@ html, body, div, span, applet, object, iframe,h1, h2, h3, h4, h5, h6, p, blockqu
 body {
   color: #444;
   background-color: #aaa;
+  height: 100%;
+  width: 100%;
+  margin: 10px;
 }
 
 /* 全体を真ん中に配置 */
@@ -21,4 +24,571 @@ body {
   background-color: #666;
   box-shadow: rgba(0, 0, 0, .4) 0 0 8px;
   overflow: hidden; // floatを使った場合の対策
+  display: inline-block;
 }
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+  background: grey;
+}
+
+.header__title {
+  font-size: 60px;
+  font-family: 'arial unicode ms';
+}
+
+
+/* ナビバーを横並びに */
+.global-nav__items {
+  height: 100px;
+  display: table;
+  table-layout: fixed;
+  text-align: center;
+  width: 100%;
+}
+.global-nav__items li {
+  display: table-cell;
+  vertical-align: middle;
+  font-size: 20px;
+}
+
+.global-nav__link {
+  text-decoration: none;
+}
+
+.global-nav__items li:nth-child(odd) {
+  background-color: #EEEEEE;
+}
+.global-nav__items li:nth-child(even) {
+  background-color: #BBBBBB;
+}
+
+/* liを横並び＆ブレットを消す */
+.bread-crumbs {
+  background: #555555;
+  padding: 15px;
+}
+.bread-crumbs__item {
+  /* liを横並び＆ブレットを消す */
+  display: inline;
+  list-style-type: none;
+  font-size: 20px;
+}
+
+.bread-crumbs__link {
+  text-decoration: none;
+}
+.bread-crumbs ol li:before {
+  /* liの前に記号追加 */
+  content: "  >  ";
+  color: #AAAAAA;
+}
+
+.bread-crumbs ol li:first-child:before {
+  /* 最初のliだけcontentを消す */
+  content:"";
+}
+.bread-crumbs__link {
+  color: white;
+}
+
+.article__image {
+  width: 100%;
+}
+
+/* 画像を横並びに配置する。 */
+.top-ads {
+  background: #CCCCCC;
+}
+
+.top-ads__items {
+  display: inline-flex;
+  justify-content: space-around;
+}
+.top-ads__item {
+  flex: 1;
+  transition: flex .3s;
+}
+.top-ads__image {
+  object-fit: fill;
+  margin: 15px;
+  width: 90%;
+}
+
+.body {
+  position: relative;
+}
+
+/* asideを左に配置する。 */
+aside.aside {
+  font-size: 100%;
+}
+main.main {
+  float: right;
+  background: #DDDDDD;
+  width: 66.666%;
+}
+
+.aside-ads__image {
+  margin-left: 10px;
+  margin-top: 10px;
+}
+
+.local-nav {
+  overflow-y: scroll;
+  height: 120px;
+  width: 300px;
+  margin: 10px;
+  background-color: #555555;
+}
+
+.local-nav__item {
+  height: 30px;
+  background-color: #999999;
+  margin-top: 3px;
+}
+
+.local-nav__link {
+  color: white;
+  margin-left: 10px;
+  line-height: 30px;
+}
+
+/* main  */
+.main-header {
+  width: 100%;
+  height: 50px;
+  padding: 10px;
+  background: #EEEEEE;
+}
+
+.main-header__title {
+  font-size: 24px;
+  font-weight: bold;
+  padding-left: 32px;
+  position: relative;
+}
+
+/* タイトル見出しアイコン */
+.main-header__title::before {
+  content: "";
+  display: block;
+  width: 12px;
+  height: 12px;
+  background-color: grey;
+  position: absolute;
+  left: 0;
+  top: 0;
+  border-right: solid 12px dimgray;
+}
+
+.main-header__title::after {
+  content: "";
+  display: block;
+  width: 12px;
+  height: 12px;
+  background-color: dimgray;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  border-right: solid 12px grey;
+}
+
+/* 三角形 */
+.main-header:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-color: transparent #CCCCCC grey transparent;
+  border-width: 0 30px 30px 0;
+}
+
+/* article */
+.article {
+  background-color: #DDDDDD;
+  width: 100%;
+  padding: 10px;
+  position: relative;
+}
+
+.article__title {
+  background: #DDDDDD;/*背景色*/
+  width: 100%;
+  font-size: 20px;
+  font-weight: bold;
+  position: relative;
+  padding: 6px 0 6px 32px;
+}
+
+.article__title::before {
+  content: "";
+  display: block;
+  width: 12px;
+  height: 18px;
+  background-color: dimgray;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.article__title::after {
+  content: "";
+  display: block;
+  width: 12px;
+  height: 18px;
+  background-color: black;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+}
+
+.article__strong {
+  font-weight: bold;
+}
+
+.article__paragraph::after {
+  content: "\A" ;
+  white-space: pre ;
+}
+
+.article__paragraph {
+  margin: 10px;
+}
+
+.article__sub-title {
+  font-size: 20px;
+  font-weight: bold;
+  padding-left: 32px;
+  position: relative;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  margin-bottom: 24px;
+  line-height: 1.3;
+}
+
+.article__sub-title::before {
+  content: "";
+  display: block;
+  width: 6px;
+  height: 18px;
+  background-color: dimgray;
+  position: absolute;
+  left: 0;
+  top: 10px;
+}
+
+.article__sub-title::after {
+  border-top: solid 9px transparent;
+  border-bottom: solid 9px transparent;
+  border-left: solid 12px ;
+  content: "";
+  display: block;
+  position: absolute;
+  margin-left: 10px;
+  margin-top: 6px;
+  left: 0;
+  top: 4px;
+}
+
+.article__unorder-list-item {
+  list-style: square;
+  margin: 30px;
+}
+
+.article__order-list {
+  list-style: decimal;
+  margin: 30px;
+}
+
+/* ブロッククオート */
+.article__blockquote {
+  line-height: 1.5;
+  padding-left: 55px;
+  position: relative;
+  padding-top: 36px;
+  padding-bottom: 6px;
+  margin-bottom: 24px;
+}
+
+.article__blockquote::before {
+  content: "''";
+  color: white;
+  font-size: 50px;
+  text-align: center;
+  line-height: 65px;
+  vertical-align: middle;
+  display: block;
+  width: 40px;
+  height: 40px;
+  background-color: #AAAAAA;
+  position: absolute;
+  left: 0;
+  top: 0;
+  border-radius: 50%;
+}
+
+.article__blockquote::after {
+  content: "";
+  display: block;
+  width: 12px;
+  height: 280px;
+  background-color: #AAAAAA;
+  position: absolute;
+  margin-left: 14px;
+  left: 0;
+  bottom: 0;
+}
+
+.article__blockquote-paragraph {
+  margin: 30px;
+}
+
+/* article__sub-sub-title */
+.article__sub-sub-title {
+  position: relative;
+  padding: 10px 0 6px 40px;
+  margin-bottom: 5px;
+  line-height: 1.4;
+  font-weight: bold;
+}
+
+.article__sub-sub-title::before {
+  content: "";
+  display: block;
+  width: 18px;
+  height: 18px;
+  background-color: black;
+  position: absolute;
+  left: 0;
+  top: 1;
+  border-radius: 50%;
+}
+
+.article__sub-sub-title::after {
+  content: "";
+  display: block;
+  width: 18px;
+  height: 18px;
+  background-color: grey;
+  position: absolute;
+  left: 0;
+  top: 0;
+  margin-top: 10px;
+  margin-left: 10px;
+  border-radius: 50%;
+}
+
+/* form */
+.form {
+  width: 100%;
+  background-color: white;
+  position: relative;
+  padding-top: 10px;
+  padding-bottom: 6px;
+}
+
+.form__title {
+  overflow: hidden;  
+  font-size: 20px;
+  font-weight: bold;
+  padding-left: 70px;
+  position: relative;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  margin-bottom: 5px;
+}
+
+.form__title::before {
+  content: "";
+  display: block;
+  width: 40px;
+  height: 26px;
+  top: 0px;
+  left: 15px;
+  border: solid 2px black; 
+  position: absolute; 
+}
+
+.form__title::after {     
+  content: "";
+  display: block;
+  width: 40px;
+  height: 40px;
+  transform: rotate(45deg);
+  top: -30px;
+  left: 15px;
+  border: solid 2px black; 
+   position: absolute;    
+}
+
+.form-item {
+  display: flex;
+}
+
+.form-item * {
+}
+
+.form-item__label {
+  padding-top: 10px;
+  width: 30%;
+  font-size: 14px;
+  font-weight: bold;
+  text-align: right;
+}
+
+.form-item__text-input, .form-item__textarea, .form-item__select-pull-down, .form-item__file {
+  width: 70%; 
+  height: 30px;
+  border-radius: 5px;
+  margin: 3px 20px 20px 20px;
+  border: solid 1px #BBBBBB;
+}
+
+.form-item__inline-item, .form-item__actions-item {
+  display: inline-block;
+  padding: 6px;
+  margin: 0px 10px 10px 10px;
+  border-radius: 5px;
+  background: #DDDDDD;
+}
+
+.form-item__textarea {
+  height: 200px;
+}
+
+.form-item__select-list {
+  width: 70%; 
+  height: 100%;
+  border-radius: 1px;
+  margin: 3px 20px 20px 20px;
+  border: solid 1px #BBBBBB;
+  background: #EEEEEE;
+  margin-top: 5px;
+}
+
+.form-item__select-list-option {
+  border: 1px #DDDDDD solid;
+  padding: 5px;
+}
+
+.form-item__file {
+  background: #EEEEEE;
+}
+
+.form-item__actions {
+  width: 70%;
+}
+
+.form-item__action {
+  border: none;
+}
+
+.form-item__actions-item {
+  width: 44%;
+  text-align: center;
+}
+
+.form-item__actions-item:nth-of-type(1) {
+  display: inline-block;
+  background: #555555;
+}
+
+.is-submit {
+  background: #555555;
+  color: white;
+}
+
+.is-reset {
+  background: #DDDDDD;
+  color: black;
+}
+
+/*footer*/
+.footer {
+  background: #555555;
+  width: 100%;
+  display: inline-flex;
+  flex-wrap: wrap;
+  padding: 20px;
+}
+
+.footer-nav {
+  width: 50%;
+  color: white;
+}
+
+.footer-nav__items {
+  margin: 0 20px 0px 16px;
+  display: inline-block;
+}
+
+.footer-nav__item {
+  margin-top: 10px;
+}
+
+.footer-nav__item::before {
+  content: "> ";
+}
+
+.footer-nav__link {
+  color: white;
+}
+
+.about-author {
+  background: #CCCCCC;
+  padding: 10px;
+  width: 50%;
+  display:flex;
+  flex-wrap: wrap;
+  border-radius: 5px;
+}
+
+.about-author__title {
+  width: 100%;
+  flex-basis: 100%;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.about-author__image {
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}
+
+.about-author__descriptions {
+  display: inline-block;
+  width: 77%;
+  font-size: 14px;
+}
+
+.about-author__term {
+  float: left ;
+  display: block;
+  margin: 5px;
+  clear: left;
+  width: 18%;
+  text-align: right;
+}
+
+.about-author__description {
+  float: left;
+  width: 75%;
+  margin: 5px;
+}
+
+
+.footer-copyright {
+  text-align: center;
+  width: 100%;
+  padding: 30px;
+  color: white;
+}
+
